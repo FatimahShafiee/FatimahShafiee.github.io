@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fatimah Binti Shafiee | Mobile Programming e-Portfolio</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #2563eb;
+      --accent: #38bdf8;
+      --light: #eff6ff;
+      --dark: #0f172a;
+      --text: #1e293b;
+      --muted: #64748b;
+      --card: #ffffff;
+      --border: #dbeafe;
+      --shadow: 0 16px 40px rgba(30, 58, 138, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 45%, #e0f2fe 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 110px 20px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      top: -120px;
+      right: -120px;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.24);
+      bottom: -90px;
+      left: -80px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4.4rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      max-width: 780px;
+      margin: 0 auto 28px;
+      color: #e0f2fe;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .profile-item {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 18px;
+      padding: 16px;
+      backdrop-filter: blur(8px);
+    }
+
+    .profile-item span {
+      display: block;
+      font-size: 0.78rem;
+      color: #bfdbfe;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .profile-item strong {
+      font-size: 0.98rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    nav .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 999px;
+      transition: all 0.25s ease;
+    }
+
+    nav a:hover {
+      background: var(--light);
+      color: var(--secondary);
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 42px 20px 80px;
+    }
+
+    section {
+      scroll-margin-top: 90px;
+      margin-bottom: 64px;
+    }
+
+    .section-title {
+      margin-bottom: 24px;
+    }
+
+    .section-title .eyebrow {
+      color: var(--secondary);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+    }
+
+    h2 {
+      color: var(--dark);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-top: 6px;
+    }
+
+    .intro-card,
+    .reflection-card,
+    .skills-card,
+    .resources-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: 24px;
+      padding: 28px;
+    }
+
+    .sdg-highlight {
+      margin-top: 18px;
+      padding: 20px;
+      border-radius: 18px;
+      background: var(--light);
+      border-left: 6px solid var(--secondary);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-body {
+      padding: 24px;
+      flex: 1;
+    }
+
+    .card h3 {
+      color: var(--primary);
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #cbd5e1;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #dbeafe, #f8fafc);
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      background: var(--secondary);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 800;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .btn.secondary {
+      background: #e0f2fe;
+      color: var(--primary);
+    }
+
+    .skills-list,
+    .resources-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .skill-pill,
+    .resource-pill {
+      background: var(--light);
+      color: var(--primary);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      background: var(--dark);
+      color: #cbd5e1;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    @media (max-width: 900px) {
+      .profile-grid,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding-top: 82px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      nav .nav-inner {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+      }
+
+      .intro-card,
+      .reflection-card,
+      .skills-card,
+      .resources-card,
+      .card-body {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="home">
+    <div class="hero-content">
+      <span class="badge">TK2323/TM2213 Mobile Programming e-Portfolio</span>
+      <h1>Fatimah Binti Shafiee</h1>
+      <p>This e-Portfolio presents my learning journey in Mobile Application Programming, from basic Jetpack Compose layouts to advanced Android features such as Room Database, Firebase Firestore, REST API, and GPS sensor integration.</p>
+      <div class="profile-grid" aria-label="Student profile information">
+        <div class="profile-item"><span>Matric No.</span><strong>A214186</strong></div>
+        <div class="profile-item"><span>Programme</span><strong>Bachelor of Information Technology</strong></div>
+        <div class="profile-item"><span>University</span><strong>Universiti Kebangsaan Malaysia</strong></div>
+        <div class="profile-item"><span>Instructor</span><strong>Dr. Rimaniza Zainal Abidin</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#home">Home</a>
+      <a href="#labs">Labs</a>
+      <a href="#projects">Projects</a>
+      <a href="#reflection">Reflection</a>
+      <a href="#skills">Skills</a>
+      <a href="#resources">Resources</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="about">
+      <div class="section-title">
+        <span class="eyebrow">Student Profile</span>
+        <h2>About This Portfolio</h2>
+      </div>
+      <div class="intro-card">
+        <p>I am a Bachelor of Information Technology student at Universiti Kebangsaan Malaysia. This portfolio documents my progress in learning Android mobile application development using Kotlin, Jetpack Compose, and modern mobile architecture.</p>
+        <div class="sdg-highlight">
+          <h3>SDG 4: Quality Education</h3>
+          <p>I chose SDG 4 because quality education helps students improve their knowledge, skills, and future opportunities through accessible and engaging learning experiences.</p>
+          <p><strong>App Theme:</strong> FunLearn — an education-focused app designed to make learning more interactive, motivating, and connected.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="labs">
+      <div class="section-title">
+        <span class="eyebrow">Lab Submissions</span>
+        <h2>Labs 1–5</h2>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/IcMuOBbTwgM" title="Lab 1 UI VSR" allowfullscreen></iframe></div>
+          <div class="card-body">
+            <span class="tag">Lab 1</span>
+            <h3>Basic UI with Jetpack Compose</h3>
+            <p>In Lab 1, I learned how to build a basic user interface using Jetpack Compose layouts such as Row, Column, and Box. This lab helped me understand the foundation of mobile UI development.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/sEoeRuqpG4U" title="Lab 2 Interaction VSR" allowfullscreen></iframe></div>
+          <div class="card-body">
+            <span class="tag">Lab 2</span>
+            <h3>Interaction and State</h3>
+            <p>In Lab 2, I learned how to manage user interaction using TextField, Button, and state management. I understood how UI changes dynamically based on user input.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/SPX66qP31V4" title="Lab 3 Material Design VSR" allowfullscreen></iframe></div>
+          <div class="card-body">
+            <span class="tag">Lab 3</span>
+            <h3>Material Design</h3>
+            <p>In Lab 3, I applied Material Design concepts such as themes, colors, typography, cards, and animations. This improved the visual consistency and user experience of my application.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/hLeSyZ-XfDY" title="Lab 4 Navigation VSR" allowfullscreen></iframe></div>
+          <div class="card-body">
+            <span class="tag">Lab 4</span>
+            <h3>Navigation and ViewModel</h3>
+            <p>In Lab 4, I implemented Navigation and ViewModel. I learned how to manage multiple screens and preserve data across screen transitions.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/zCHFXgkCXuk" title="Lab 5 Room Database VSR" allowfullscreen></iframe></div>
+          <div class="card-body">
+            <span class="tag">Lab 5</span>
+            <h3>Room Database</h3>
+            <p>In Lab 5, I integrated Room Database to store data locally. I learned the relationship between Entity, DAO, Repository, and ViewModel in Android architecture.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title">
+        <span class="eyebrow">Project Submissions</span>
+        <h2>Project 1 and Project 2</h2>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="video-wrapper"><div class="video-placeholder">Project 1 YouTube VSR link to be updated</div></div>
+          <div class="card-body">
+            <span class="tag">Project 1</span>
+            <h3>FunLearn</h3>
+            <p><strong>Problem Statement:</strong> Many students struggle to stay motivated while learning. This application uses gamification and XP rewards to encourage learning activities.</p>
+            <p><strong>Lessons Learned:</strong> Project 1 taught me how to combine Navigation, ViewModel, and Material Design into a complete multi-screen application.</p>
+            <div class="button-row">
+              <a class="btn secondary" href="#" aria-label="Project 1 GitHub link placeholder">GitHub Link Pending</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="video-wrapper"><div class="video-placeholder">Project 2 YouTube VSR link to be updated</div></div>
+          <div class="card-body">
+            <span class="tag">Project 2</span>
+            <h3>FunLearn Quest</h3>
+            <p><strong>Problem Statement:</strong> Students need a smarter learning platform that can save progress, retrieve live educational content, and integrate real-world learning activities through sensors and cloud services.</p>
+            <p><strong>Lessons Learned:</strong> Project 2 enhanced my understanding of Room Database, Firebase Firestore, REST APIs, and GPS sensor integration in a modern Android application.</p>
+            <div class="button-row">
+              <a class="btn" href="https://drive.google.com/drive/folders/133Xg9rPpn00FWvNRDzaYkxt-nxYuvnVx?usp=drive_link" target="_blank" rel="noopener">View Project 2 Drive</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="reflection">
+      <div class="section-title">
+        <span class="eyebrow">Reflection</span>
+        <h2>Learning Journey</h2>
+      </div>
+      <div class="reflection-card">
+        <p>From Lab 1 to Project 2, I gradually developed my understanding of Android application development. I started with basic layouts, then learned interaction, Material Design, Navigation, Room Database, Firebase, APIs, and sensor integration. The experience improved my problem-solving skills and strengthened my confidence in mobile application development.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-title">
+        <span class="eyebrow">Skills</span>
+        <h2>Skills & Tech Stack</h2>
+      </div>
+      <div class="skills-card">
+        <p>Technologies and development concepts used throughout the labs and projects:</p>
+        <div class="skills-list" aria-label="Skills list">
+          <span class="skill-pill">Kotlin</span>
+          <span class="skill-pill">Jetpack Compose</span>
+          <span class="skill-pill">Navigation Compose</span>
+          <span class="skill-pill">ViewModel</span>
+          <span class="skill-pill">Room Database</span>
+          <span class="skill-pill">Firebase Firestore</span>
+          <span class="skill-pill">Retrofit</span>
+          <span class="skill-pill">REST API</span>
+          <span class="skill-pill">GPS Sensor</span>
+          <span class="skill-pill">Android Studio</span>
+          <span class="skill-pill">Material Design 3</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <div class="section-title">
+        <span class="eyebrow">Resources</span>
+        <h2>Resources & References</h2>
+      </div>
+      <div class="resources-card">
+        <p>The following resources supported my learning and development process:</p>
+        <div class="resources-list" aria-label="Resources list">
+          <span class="resource-pill">Android Developers Documentation</span>
+          <span class="resource-pill">Jetpack Compose Documentation</span>
+          <span class="resource-pill">Firebase Documentation</span>
+          <span class="resource-pill">ZenQuotes API</span>
+          <span class="resource-pill">Material Design 3</span>
+          <span class="resource-pill">ChatGPT for learning, debugging, and understanding concepts</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Fatimah Binti Shafiee</strong> | A214186 | Mobile Programming e-Portfolio | 2026</p>
+  </footer>
+</body>
+</html>
